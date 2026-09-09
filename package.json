@@ -8,9 +8,9 @@
     "start": "node src/app.js"
   },
   "dependencies": {
-    "cors": "latest",
-    "dotenv": "latest",
-    "express": "latest",
-    "mysql2": "latest"
+    "cors": "2.8.6",
+    "dotenv": "17.4.2",
+    "express": "5.2.1",
+    "mysql2": "3.24.4"
   }
 }

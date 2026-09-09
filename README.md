@@ -8,7 +8,6 @@ src/
 	controllers/dashboardController.js
 	router/routerBiblioTK.js
 	app.js
-database/schema.sql
 ```
 
 ## Ejecutar
@@ -17,28 +16,24 @@ database/schema.sql
 npm install
 ```
 
-1. Ejecuta `database/schema.sql` en MySQL.
-2. Copia `.env.example` como `.env` y configura tus credenciales.
-3. Inicia el servidor con `npm run dev`.
+1. Copia `.env.example` como `.env` y configura las credenciales de la base de datos existente.
+2. Inicia el servidor con `npm run dev`.
 
 El servidor escucha en `http://localhost:3000`.
 
 ## Rutas
 
 - `GET /api/bibliotk/health`: comprueba el servidor.
-- `GET /api/bibliotk/dashboard`: devuelve métricas, libros populares, préstamos próximos y actividad mensual.
+- `GET /api/bibliotk/dashboard`: devuelve el conteo de usuarios por rol.
 - `GET /api/bibliotk/libros`: lista libros con `busqueda`, `categoria`, `estado`, `pagina` y `limite`.
 ## Ejemplo de respuesta del dashboard:
 
 ```json
 {
-	"metricas": {
-		"totalLibros": 1284,
-		"librosDisponibles": 1198,
-		"usuariosActivos": 248,
-		"prestamosActivos": 86,
-		"prestamosAtrasados": 4,
-		"tasaDevolucion": 92.4
+	"roles": {
+		"admin": 2,
+		"usuario": 248,
+		"superadmin": 1
 	}
 }
 ```

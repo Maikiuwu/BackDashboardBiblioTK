@@ -2,10 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import routerBiblioTK from './router/routerBiblioTK.js';
-import { probarConexion } from './config/db.js';
+import { testConnection }from './config/db.js'
 
 const app = express();
-const puerto = Number(process.env.PORT) || 3000;
+const puerto = Number(process.env.PORT) || 3002;
 
 app.use(express.json());
 app.use(cors({
@@ -14,7 +14,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-app.use('/api/bibliotk', routerBiblioTK);
+app.use('/DashboardBibliotk', routerBiblioTK);
 
 app.use((error, _req, res, _next) => {
   console.error('Error del servidor:', error);
@@ -23,10 +23,7 @@ app.use((error, _req, res, _next) => {
 
 app.listen(puerto, async () => {
   console.log(`Servidor BiblioTK corriendo en el puerto ${puerto}`);
-  try {
-    await probarConexion();
-    console.log('Conexion a BD exitosa');
-  } catch (error) {
-    console.error('Error al conectar a la BD:', error.message);
-  }
+
+  testConnection();
+
 });

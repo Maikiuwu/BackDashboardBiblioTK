@@ -9,7 +9,8 @@ const puerto = Number(process.env.PORT) || 3002;
 
 app.use(express.json());
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN ? process.env.CLIENT_ORIGIN.split(',') : true,
+    origin: ["http://localhost:5173", "http://localhost:5174"],
+    credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
